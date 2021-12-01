@@ -10,6 +10,7 @@
 <script>
 // import Compiler from './components/container/access/projectDetail/compiler/Compiler.vue'
 import Menu from './components/component/global/Menu.vue'
+import '../public/reset.css'
 
 export default {
   name: 'App',
