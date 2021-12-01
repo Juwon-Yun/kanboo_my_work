@@ -4,12 +4,14 @@
     locale="ko"
     :time="false"
     hide-view-selector
+    @cell-focus='this.sendselectDate($event)'
     active-view="month"
     :disable-views="['week', 'day']"
     :events=$store.state.scheduler.data
     class="vuecal--blue-theme vuecal--rounded-theme "
     style="width: 100% ;height: 280px">
   </vue-cal>
+    <!-- @click-focus="isCome($event)" -->
     <!-- @cell-focus="$store.state.scheduler.commit('sendselectDate', $event)" -->
   
 </template>
@@ -20,21 +22,32 @@ import 'vue-cal/dist/vuecal.css'
 import 'vue-cal/dist/drag-and-drop.js'
 import 'vue-cal/dist/i18n/ko.js'
 import '../../../../../assets/css/blackTheme.css';
+import { mapActions, mapMutations } from 'vuex'
 
 export default {
     components : {
         VueCal,
     },
     data() {
-    return {
-       showAllDayEvents: 0,
-       shortEventsOnMonthView: false,
-       showEventCreationDialog: false,
-       changeTheme : false,
-       changeLang : false,
-      // modal https://kr.vuejs.org/v2/examples/modal.html
-    }
-    }
+        return {
+        showAllDayEvents: 0,
+        shortEventsOnMonthView: false,
+        showEventCreationDialog: false,
+        changeTheme : false,
+        changeLang : false,
+        // modal https://kr.vuejs.org/v2/examples/modal.html
+        }
+    },
+    methods : {
+        ...mapMutations({
+            sendselectDate : 'scheduler/sendselectDate',
+        }),
+        ...mapActions({
+
+        }),
+    },
+    mounted() {
+    },
 }
 </script>
 

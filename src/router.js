@@ -87,7 +87,7 @@ const routes = [
         component: GitAndIssue
       },
       {
-        path: "erdview",
+        path: "erdandview",
         component: DashBoard
       },
       {

@@ -1,28 +1,29 @@
 <template>
 <div>
-  <vue-cal 
-      small
-      locale='ko'
-      hide-view-selector
-      :time-from="7 * 60"
-      :time-to="23 * 60"
-      active-view="week"
-      :disable-views="['years', 'year', 'month', 'day']"
-      :selected-date=$store.state.scheduler.selectedDate
-      @cell-dblclick="alertMsg()"
-      resize-x
-      :events=$store.state.scheduler.data
-      :editable-events="{ title: true, drag: true, resize: true, delete: true, create: false }"
-      :drag-to-create-threshold="0"
-      ref="vuecal"
-      :show-all-day-events="['short', true, false][showAllDayEvents]"
-      class="vuecal--dark-theme"
-      style="width: 100% ;height: 100%"
-      >
-    </vue-cal>
     <button @click="customEventCreation" style="color : #eee;">
         button
     </button>
+    <vue-cal 
+       small
+       locale='ko'
+       hide-view-selector
+       :time-from="7 * 60"
+       :time-to="23 * 60"
+       active-view="week"
+       :disable-views="['years', 'year', 'month', 'day']"
+       :selected-date=$store.state.scheduler.selectedDate
+       @cell-dblclick="alertMsg()"
+       resize-x
+       :events=$store.state.scheduler.data
+       :editable-events="{ title: true, drag: true, resize: true, delete: true, create: false }"
+       :drag-to-create-threshold="0"
+       ref="vuecal"
+       :show-all-day-events="['short', true, false][showAllDayEvents]"
+       class="vuecal--dark-theme"
+       style="width: 100% ;height: 100%"
+       >
+    </vue-cal>
+    
 </div>
 
 </template>
@@ -47,7 +48,7 @@ export default {
             alert("모달창눌렀니")
         },
         customEventCreation () {
-            const dateTime = prompt('Create event on (YYYY-MM-DD HH:mm)', '2021-11-27 11:15')
+            const dateTime = prompt('Create event on (YYYY-MM-DD HH:mm)', '2021-12-01 11:15')
 
             // Check if date format is correct before creating event.
             if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/.test(dateTime)) {
@@ -72,6 +73,8 @@ export default {
             changeLang : false,
              // modal https://kr.vuejs.org/v2/examples/modal.html
         }
+    },
+    mounted() {
     },
 }
 </script>

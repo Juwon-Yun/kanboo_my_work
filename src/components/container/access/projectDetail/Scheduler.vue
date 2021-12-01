@@ -85,7 +85,7 @@ export default {
 }
 </script>
 
-<style scope>
+<style>
 *{
   font-size: 15px;
 }
@@ -103,7 +103,6 @@ export default {
   flex-direction: column;
   /* justify-content: space-between; */
 }
-
 .filter{
   color : #eee;
   font-size: 20px;
