@@ -1,10 +1,10 @@
 <template>
 <div class="gitContainer">
-  <div class="leftDiv">
+  <div class="gitleftDiv">
       <GitRepository class="git"/>
       <Issue class="issue"/>
   </div>
-  <div class="rightDiv">
+  <div class="gitrightDiv">
       <GitCode/>
   </div>
 </div>
@@ -31,10 +31,10 @@ export default {
     height: 85%;
     justify-content: space-between;
 }
-.leftDiv{
+.gitleftDiv{
     width: 45%;
 }
-.rightDiv{
+.gitrightDiv{
     width: 50%;
     height: 100%;
 }
@@ -42,19 +42,5 @@ export default {
 h1{
     color: #eee;
 }
-
-/* .git > *{
-    height: 150px;
-    transition: all .5s ease-in;
-}
-
-.git:hover > * {
-    height: 500px;
-}
-
-.git:hover +.issue {
-    height: 100px;
-    overflow: hidden;
-} */
 
 </style>

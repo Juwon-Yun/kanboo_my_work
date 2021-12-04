@@ -28,7 +28,7 @@
 
 </template>
 
-<script>
+<script scope>
 import VueCal from 'vue-cal'
 import 'vue-cal/dist/vuecal.css'
 import 'vue-cal/dist/drag-and-drop.js'

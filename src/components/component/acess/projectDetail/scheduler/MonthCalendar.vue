@@ -51,7 +51,7 @@ export default {
 }
 </script>
 
-<style>
+<style scope>
 .vuecal--rounded-theme .vuecal__cell-content{
     font-size: 14px;
     width : 30px;
