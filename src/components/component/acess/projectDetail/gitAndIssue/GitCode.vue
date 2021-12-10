@@ -83,7 +83,7 @@ export default {
 }
 
 .prism-editor__textarea:focus {
-outline: none;
+    outline: none;
 }
 
 .fileContent::-webkit-scrollbar, .my-editor::-webkit-scrollbar {

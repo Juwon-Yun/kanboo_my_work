@@ -6466,6 +6466,11 @@
   "resolved" "https://registry.npmjs.org/moment-mini/-/moment-mini-2.24.0.tgz"
   "version" "2.24.0"
 
+"moment@^2.29.1":
+  "integrity" "sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ=="
+  "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.1.tgz"
+  "version" "2.29.1"
+
 "move-concurrently@^1.0.1":
   "integrity" "sha1-viwAX9oy4LKa8fBdfEszIUxwH5I="
   "resolved" "https://registry.npmjs.org/move-concurrently/-/move-concurrently-1.0.1.tgz"
@@ -9349,6 +9354,13 @@
     "prismjs" "^1.23.0"
     "vue" "^3.0.0-0"
     "vue-router" "^4.0.2"
+
+"vue3-timepicker@^1.0.0-beta.2":
+  "integrity" "sha512-j4IVU7PPLrO5HADspv1E+tXTkMc9gWfCu/ruwJqJdX7qugAaVk3yNF7Mj4icRGlU4uKeSohlXWA8/Uj1ePiTxQ=="
+  "resolved" "https://registry.npmjs.org/vue3-timepicker/-/vue3-timepicker-1.0.0-beta.2.tgz"
+  "version" "1.0.0-beta.2"
+  dependencies:
+    "vue" "^3.0.5"
 
 "vue3-tree@^0.8.0":
   "version" "0.8.0"

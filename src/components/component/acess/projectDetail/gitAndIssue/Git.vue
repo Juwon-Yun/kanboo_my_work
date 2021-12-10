@@ -22,7 +22,7 @@ import { ref } from 'vue';
 import Tree from 'vue3-tree'
 import "vue3-tree/dist/style.css";
 
-const key = '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';
+const key = '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';
 
 export default {
     components : {

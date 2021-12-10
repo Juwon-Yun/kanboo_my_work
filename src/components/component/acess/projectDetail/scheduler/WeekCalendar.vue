@@ -1,80 +1,93 @@
 <template>
 <div>
-    <button @click="customEventCreation" style="color : #eee;">
-        button
-    </button>
-    <vue-cal 
-       small
-       locale='ko'
-       hide-view-selector
-       :time-from="7 * 60"
-       :time-to="23 * 60"
-       active-view="week"
-       :disable-views="['years', 'year', 'month', 'day']"
-       :selected-date=$store.state.scheduler.selectedDate
-       @cell-dblclick="alertMsg()"
-       resize-x
-       :events=$store.state.scheduler.data
-       :editable-events="{ title: true, drag: true, resize: true, delete: true, create: false }"
-       :drag-to-create-threshold="0"
-       ref="vuecal"
-       :show-all-day-events="['short', true, false][showAllDayEvents]"
-       class="vuecal--dark-theme"
-       style="width: 100% ;height: 100%"
-       >
+     <vue-cal 
+      small
+      locale='ko'
+      hide-view-selector
+      :time-from="0 * 60"
+      :time-to="24 * 60"
+      active-view="week"
+      :disable-views="['years', 'year', 'month', 'day']"
+      resize-x
+      :editable-events="{ title: true, drag: true, resize: true, delete: true, create: false }"
+      :events=$store.state.scheduler.data
+      class="vuecal--dark-theme vuecal--full-height-delete"
+      
+      @event-delete="deleteEventFunction"
+      @event-duration-change="resizeUpdateEventFunction"
+      @event-drop="dropUpdateEventFunction"
+      
+      :selected-date=this.$store.state.selectedDate
+      ref="vuecal"
+      :drag-to-create-threshold="20"
+      style="width: 100% ;height: 100%;"
+      :show-all-day-events="['short', true, false][showAllDayEvents]"
+      >
     </vue-cal>
-    
 </div>
 
 </template>
 
-<script scope>
+<script scoped>
+import { mapMutations } from 'vuex'
 import VueCal from 'vue-cal'
-import 'vue-cal/dist/vuecal.css'
-import 'vue-cal/dist/drag-and-drop.js'
-import 'vue-cal/dist/i18n/ko.js'
-import '../../../../../assets/css/blackTheme.css';
 
 export default {
     components:{
         VueCal,
     },
-    methods: {
-        clickDate(e){
-            console.log(e)
-        },
-
-        alertMsg(){
-            alert("모달창눌렀니")
-        },
-        customEventCreation () {
-            const dateTime = prompt('Create event on (YYYY-MM-DD HH:mm)', '2021-12-01 11:15')
-
-            // Check if date format is correct before creating event.
-            if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/.test(dateTime)) {
-                this.$refs.vuecal.createEvent(
-                    // Formatted start date and time or JavaScript Date object.
-                    dateTime,
-                    // Event duration in minutes (Integer). 일정 기간
-                    360,
-                    // Custom event props (optional).
-                    { title: 'New Event', content: 'yay! 🎉', class: 'blue-event' }
-                )
-            } else if (dateTime) alert('Wrong date format.')
-      },
-    },
     data() {
         return {
             showAllDayEvents: 0,
             shortEventsOnMonthView: false,
-            eventsCssClasses: ['leisure', 'sport', 'health'],
+            eventsCssClasses: ['common', 'individual', 'notice', 'Emergency', 'vacation', 'note'],
             showEventCreationDialog: false,
             changeTheme : false,
             changeLang : false,
-             // modal https://kr.vuejs.org/v2/examples/modal.html
         }
     },
-    mounted() {
+    methods: {
+         ...mapMutations({
+            // 단일 vuex일때는 'store명/함수명'이 아닌 '함수명'을 기재해야 작동한다. 
+            setModal : 'scheduler/setModal',
+            setCallAddFunction : 'scheduler/setCallAddFunction',
+            closeModal : 'scheduler/closeModal',
+        }), 
+
+        deleteEventFunction(e){
+            let copy = [...this.$store.state.scheduler.data];
+            for(let i = 0; i<copy.length; i++){
+                if(e.id === copy[i].id){
+                    copy.splice(i,1);
+                }
+            }
+            this.$store.state.scheduler.data = copy;
+        },
+        
+        dropUpdateEventFunction(e){
+            let copy = [...this.$store.state.scheduler.data];
+            let momentedStartTime = e.event.start.format('YYYY-MM-DD HH:mm')
+            let momentedEndTime = e.event.end.format('YYYY-MM-DD HH:mm')
+
+            for(let i = 0; i<copy.length; i++){
+                if(e.event.id === copy[i].id){
+                    copy[i].start = momentedStartTime
+                    copy[i].end = momentedEndTime
+                }
+            }
+            this.$store.state.scheduler.data = copy;
+        },
+        resizeUpdateEventFunction(e){
+            let momentedEndTime=e.event.end.format('YYYY-MM-DD HH:mm')
+            let copy = [...this.$store.state.scheduler.data];
+
+            for(let i = 0; i < copy.length; i++){
+                if(e.event.id === copy[i].id){
+                    copy[i].end = momentedEndTime
+                }
+            }
+            this.$store.state.scheduler.data = copy;
+        },
     },
 }
 </script>

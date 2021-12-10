@@ -18,10 +18,6 @@
 
 <script>
 import VueCal from 'vue-cal'
-import 'vue-cal/dist/vuecal.css'
-import 'vue-cal/dist/drag-and-drop.js'
-import 'vue-cal/dist/i18n/ko.js'
-import '../../../../../assets/css/blackTheme.css';
 import { mapActions, mapMutations } from 'vuex'
 
 export default {
