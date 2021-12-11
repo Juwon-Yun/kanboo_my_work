@@ -1,3 +1,5 @@
+import moment from "moment"
+
 const git = {
   namespaced : true,
   state(){
@@ -6,7 +8,7 @@ const git = {
           fileName: '',
           content : '',
           nickname : '윤주원',
-          startDate : new Date().getDate(),
+          startDate : moment().format('YYYY-MM-DD HH:mm'),
           currentTime : '오늘',
           state : '버그',
         },
@@ -106,7 +108,7 @@ const git = {
           fileName: '',
           content : '',
           nickname : '윤주원',
-          startDate : new Date(),
+          startDate : moment().format('YYYY-MM-DD HH:mm'),
           currentTime : '오늘',
           state : '버그',
         }

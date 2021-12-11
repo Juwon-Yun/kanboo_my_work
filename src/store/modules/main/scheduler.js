@@ -5,6 +5,7 @@ const scheduler = {
   state() {
     return {
       selectedDate : null,
+            isToggle : false,
             showAllDayEvents: 0,  
             shortEventsOnMonthView: false,
             showEventCreationDialog: false,
@@ -42,6 +43,7 @@ const scheduler = {
 
             data :[
                 {
+                id : '1',
                 start: '2021-12-09 11:15',
                 end: '2021-12-09 15:15',
                 title: '테스트일정 제목',
@@ -50,8 +52,34 @@ const scheduler = {
                 deletable: true,
                 resizable: true,
                 draggable: true,
-                allDay : false
+                allDay : false,
+                isgantt : false,
+                isShow : true,
               },
+              {
+                id : '2',
+                start: '2021-12-09 11:15',
+                end: '2021-12-09 15:15',
+                title: '테스트일정 제목',
+                content: '테스트일정 내용',
+                class: 'common',
+                deletable: true,
+                resizable: true,
+                draggable: true,
+                allDay : true,
+                isgantt : false,
+                isShow : true,
+              },
+            ],
+            copiedData : [{}],
+            
+            ganttData : [
+              {
+                // 간트 일정 별 색상을 따로 불러올 때 지정함 0~29% gray, 30%~59% blue, 60%~100% green
+                class1 : 'gantt-gray',
+                class2 : 'gantt-blue',
+                class3 : 'gantt-green',
+              }
             ],
     }
   },
@@ -79,23 +107,23 @@ const scheduler = {
       }
     },
 
-    setCallAddFunction(state, e){
-      console.log(e)
+    setCallAddFunction(state){
+      // console.log(e)
       state.callAddFunction = !state.callAddFunction
       if(state.callAddFunction) {
         state.isModal = false
       }
     },
     setClickedValue(state, e){
-      console.log(e)
+      // console.log(e)
       state.clickedValue = e
     },
     setFlagStartDate(state,  e){
-      console.log(e)
+      // console.log(e)
       state.flagStartDate = e
     },
     setflagEndDate(state,  e){
-      console.log(e)
+      // console.log(e)
       state.flagEndDate = e
     },
     getStartDate(state, e){
@@ -112,7 +140,21 @@ const scheduler = {
     setModalFalse(state){
       state.isModal = false
     },
-    createEventUseModal(state){
+    resetValue(state){
+      state.autoScrollData2 = ''
+      state.autoScrollData1 = ''
+      state.endDate = ''
+      state.startDate = ''
+      state.eventTitle = ''
+      state.eventContent = ''
+      state.selectedClass = ''
+      state.isAllDay = ''
+      state.deleteflag = ''
+      state.resizeflag = ''
+      state.clickedValue = '공통'
+    },
+
+    async createEventUseModal(state){
       switch (state.clickedValue) {
         case '공통':
           state.clickedValue = 'common'   
@@ -150,14 +192,15 @@ const scheduler = {
         state.resizeflag = false
       }
       
-      // 시작날이 end날 보다 최신이면 return?
-      // 시작시간 == 끝나는 시간 안되게 
+      // timepicker 분값이 mm 이면 알람추가??
+      console.log(state.autoScrollData1)
+      console.log(state.autoScrollData2)
 
-      if(state.autoScrollData1 === state.autoScrollData2
-       || state.autoScrollData1 > state.autoScrollData2){
+      if(state.autoScrollData1 === state.autoScrollData2 || state.autoScrollData1 > state.autoScrollData2){
+        this.commit('scheduler/resetValue')
         return
       }
-    
+      const copy = [...state.data]
       const arr ={
         id : 'a002',
         start : state.startDate +' '+ state.autoScrollData1,
@@ -172,11 +215,40 @@ const scheduler = {
 
       }
 
-      console.log(arr)
+      // console.log(arr)
       state.data.push(arr)
-      console.log('data => ', state.data )
-      // state.isModal = false
-      this.setModalFalse()
+      // console.log('data => ', state.data )
+      
+      
+      if(copy.length !== state.data.length){
+        // this.resetValue()
+        this.commit('scheduler/resetValue')
+      }
+      
+      this.commit('scheduler/setModalFalse')
+      // this.setModalFalse()
+
+    },
+    copyDataFunction(state){
+      state.copiedData = [...state.data]
+    },
+    
+     toggleAllDayContent(state){
+       const copy = [...state.data]
+       if(!state.isToggle){
+         for(let i = 0; i < copy.length; i++){
+           if(copy[i].allDay === true){
+             copy.splice(i, 1)
+            }
+          }
+        this.commit('scheduler/copyDataFunction')
+        state.data = [...copy]
+        state.showAllDayEvents = 2
+      }else if(state.isToggle){
+        state.data = [...state.copiedData]
+        state.showAllDayEvents = 0
+      }
+      state.isToggle = !state.isToggle
     },
   },
 }

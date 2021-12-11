@@ -58,3 +58,12 @@ button {
   cursor: pointer;
   background: none;
 }
+.vue__time-picker input.vue__time-picker-input{
+	width : 98%;
+	background-color : #2C2F3B;
+	border: none;
+	border-radius: 8px;
+	margin: 3px;
+	margin-bottom: 10px;
+	color: #fff;
+}

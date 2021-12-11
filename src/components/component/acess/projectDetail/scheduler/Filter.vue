@@ -2,7 +2,7 @@
    <h1>Filter</h1>
     <ul>
       <li> 
-        <input type="checkbox" id="all">
+        <input type="checkbox" id="all" >
         <label for="all">전체</label>
       </li>
       <li> 

@@ -1,6 +1,8 @@
 <template>
+    <button style="color : white;" @click="this.toggleAllDayContent">AllDay 커스텀</button>
 <div>
-     <vue-cal 
+
+     <vue-cal
       small
       locale='ko'
       hide-view-selector
@@ -21,7 +23,7 @@
       ref="vuecal"
       :drag-to-create-threshold="20"
       style="width: 100% ;height: 100%;"
-      :show-all-day-events="['short', true, false][showAllDayEvents]"
+      :show-all-day-events="['short', true, false][this.$store.state.scheduler.showAllDayEvents]"
       >
     </vue-cal>
 </div>
@@ -38,13 +40,13 @@ export default {
     },
     data() {
         return {
-            showAllDayEvents: 0,
-            shortEventsOnMonthView: false,
-            eventsCssClasses: ['common', 'individual', 'notice', 'Emergency', 'vacation', 'note'],
+            eventsCssClasses: ['common', 'individual', 'notice', 'Emergency', 'vacation', 'note', 'gantt'],
             showEventCreationDialog: false,
             changeTheme : false,
             changeLang : false,
         }
+    },
+    mounted() {
     },
     methods: {
          ...mapMutations({
@@ -52,6 +54,7 @@ export default {
             setModal : 'scheduler/setModal',
             setCallAddFunction : 'scheduler/setCallAddFunction',
             closeModal : 'scheduler/closeModal',
+            toggleAllDayContent : 'scheduler/toggleAllDayContent',
         }), 
 
         deleteEventFunction(e){

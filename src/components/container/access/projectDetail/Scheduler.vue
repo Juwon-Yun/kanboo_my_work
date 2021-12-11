@@ -1,4 +1,5 @@
 <template >
+  <!-- default는 종일 탭이 없는거고 토글은 종일텝이 나오는 것 (일반 스케쥴 보여줌 ) -->
   <div class="black-bg" v-if="this.$store.state.scheduler.isModal" @click="closeModal">
   <div class="white-bg">
       <div class="white-bg-left" >
@@ -64,15 +65,13 @@
           <button v-else style="width : 100%; " 
                  @click="filterClick" class="filterBtn">
           {{a}}</button>
-
-
           
           </div>
         </div>
 
         <div class="finish-wrap">
-          <button id="cancelBtn" class="closeModalBtn" >CANCEL</button>
-          <button id="createBtn" class="closeModalBtn" @click="this.createEventUseModal" >CREATE</button>
+          <button id="cancelBtn" class="closeModalBtn" @click="this.resetValue()">CANCEL</button>
+          <button id="createBtn" class="closeModalBtn" @click="this.createEventUseModal()" >CREATE</button>
         </div>
       
 
@@ -138,8 +137,6 @@ export default {
       endZIndex : 0,
     }
   },
-  mounted() {
-  },
   methods: {
     ...mapMutations({
       showData : 'scheduler/showData',
@@ -152,6 +149,7 @@ export default {
       setFlagStartDate : 'scheduler/setFlagStartDate',
       setflagEndDate : 'scheduler/setflagEndDate',
       setModalTrue : 'scheduler/setModalTrue',
+      resetValue : 'scheduler/resetValue',
     }),
 
     // 필터 클릭시 색 변경
