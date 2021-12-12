@@ -1,7 +1,6 @@
 <template>
     <button style="color : white;" @click="this.toggleAllDayContent">AllDay 커스텀</button>
 <div>
-
      <vue-cal
       small
       locale='ko'
@@ -19,7 +18,7 @@
       @event-duration-change="resizeUpdateEventFunction"
       @event-drop="dropUpdateEventFunction"
       
-      :selected-date=this.$store.state.selectedDate
+      :selected-date=$store.state.scheduler.selectedDate
       ref="vuecal"
       :drag-to-create-threshold="20"
       style="width: 100% ;height: 100%;"

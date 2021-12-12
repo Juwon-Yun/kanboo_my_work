@@ -4,7 +4,7 @@
     locale="ko"
     :time="false"
     hide-view-selector
-    @cell-focus='this.sendselectDate($event)'
+    @cell-focus="setSelectDate($event)"
     active-view="month"
     :disable-views="['week', 'day']"
     :events=$store.state.scheduler.data
@@ -36,7 +36,7 @@ export default {
     },
     methods : {
         ...mapMutations({
-            sendselectDate : 'scheduler/sendselectDate',
+            setSelectDate : 'scheduler/setSelectDate',
         }),
         ...mapActions({
 

@@ -4,7 +4,7 @@ const scheduler = {
   namespaced: true,
   state() {
     return {
-      selectedDate : null,
+            selectedDate : '',
             isToggle : false,
             showAllDayEvents: 0,  
             shortEventsOnMonthView: false,
@@ -32,6 +32,8 @@ const scheduler = {
             deleteflag : '',
             resizeflag : '',
 
+            filterValue : '',
+
             buttonText : [
               '공통',
               '개인',
@@ -43,9 +45,9 @@ const scheduler = {
 
             data :[
                 {
-                id : '1',
-                start: '2021-12-09 11:15',
-                end: '2021-12-09 15:15',
+                id : '16',
+                start: '2021-12-09 09:15',
+                end: '2021-12-09 11:15',
                 title: '테스트일정 제목',
                 content: '테스트일정 내용',
                 class: 'common',
@@ -54,12 +56,180 @@ const scheduler = {
                 draggable: true,
                 allDay : false,
                 isgantt : false,
-                isShow : true,
+              },
+              {
+                id : '15',
+                start: '2021-12-09 11:15',
+                end: '2021-12-09 13:15',
+                title: '테스트일정 제목',
+                content: '테스트일정 내용',
+                class: 'individual',
+                deletable: true,
+                resizable: true,
+                draggable: true,
+                allDay : true,
+                isgantt : false,
+              },
+                {
+                id : '14',
+                start: '2021-12-08 08:15',
+                end: '2021-12-08 11:15',
+                title: '테스트일정 제목',
+                content: '테스트일정 내용',
+                class: 'notice',
+                deletable: true,
+                resizable: true,  
+                draggable: true,
+                allDay : false,
+                isgantt : false,
+              },
+              {
+                id : '13',
+                start: '2021-12-09 11:15',
+                end: '2021-12-09 15:15',
+                title: '테스트일정 제목',
+                content: '테스트일정 내용',
+                class: 'Emergency',
+                deletable: true,
+                resizable: true,
+                draggable: true,
+                allDay : false,
+                isgantt : false,
+              },
+                {
+                id : '12',
+                start: '2021-12-09 11:15',
+                end: '2021-12-09 15:15',
+                title: '테스트일정 제목',
+                content: '테스트일정 내용',
+                class: 'vacation',
+                deletable: true,
+                resizable: true,
+                draggable: true,
+                allDay : false,
+                isgantt : false,
+              },
+              {
+                id : '11',
+                start: '2021-12-09 11:15',
+                end: '2021-12-09 15:15',
+                title: '테스트일정 제목',
+                content: '테스트일정 내용',
+                class: 'note',
+                deletable: true,
+                resizable: true,
+                draggable: true,
+                allDay : false,
+                isgantt : false,
+              },
+                {
+                id : '10',
+                start: '2021-12-09 11:15',
+                end: '2021-12-09 15:15',
+                title: '테스트일정 제목',
+                content: '테스트일정 내용',
+                class: 'Emergency',
+                deletable: true,
+                resizable: true,
+                draggable: true,
+                allDay : false,
+                isgantt : false,
+              },
+              {
+                id : '9',
+                start: '2021-12-08 11:15',
+                end: '2021-12-08 15:15',
+                title: '테스트일정 제목',
+                content: '테스트일정 내용',
+                class: 'common',
+                deletable: true,
+                resizable: true,
+                draggable: true,
+                allDay : false,
+                isgantt : false,
+              },
+                {
+                id : '1',
+                start: '2021-12-07 11:15',
+                end: '2021-12-07 15:15',
+                title: '테스트일정 제목',
+                content: '테스트일정 내용',
+                class: 'individual',
+                deletable: true,
+                resizable: true,
+                draggable: true,
+                allDay : false,
+                isgantt : false,
               },
               {
                 id : '2',
-                start: '2021-12-09 11:15',
-                end: '2021-12-09 15:15',
+                start: '2021-12-10 11:15',
+                end: '2021-12-10 15:15',
+                title: '테스트일정 제목',
+                content: '테스트일정 내용',
+                class: 'Emergency',
+                deletable: true,
+                resizable: true,
+                draggable: true,
+                allDay : false,
+                isgantt : false,
+              },
+                {
+                id : '3',
+                start: '2021-12-11 11:15',
+                end: '2021-12-11 15:15',
+                title: '테스트일정 제목',
+                content: '테스트일정 내용',
+                class: 'notice',
+                deletable: true,
+                resizable: true,
+                draggable: true,
+                allDay : false,
+                isgantt : false,
+              },
+              {
+                id : '4',
+                start: '2021-12-12 11:15',
+                end: '2021-12-12 15:15',
+                title: '테스트일정 제목',
+                content: '테스트일정 내용',
+                class: 'note',
+                deletable: true,
+                resizable: true,
+                draggable: true,
+                allDay : false,
+                isgantt : false,
+              },
+                {
+                id : '5',
+                start: '2021-12-13 11:15',
+                end: '2021-12-13 15:15',
+                title: '테스트일정 제목',
+                content: '테스트일정 내용',
+                class: 'notice',
+                deletable: true,
+                resizable: true,
+                draggable: true,
+                allDay : false,
+                isgantt : false,
+              },
+              {
+                id : '6',
+                start: '2021-12-14 11:15',
+                end: '2021-12-14 15:15',
+                title: '테스트일정 제목',
+                content: '테스트일정 내용',
+                class: 'note',
+                deletable: true,
+                resizable: true,
+                draggable: true,
+                allDay : false,
+                isgantt : false,
+              },
+                {
+                id : '7',
+                start: '2021-12-15 11:15',
+                end: '2021-12-15 15:15',
                 title: '테스트일정 제목',
                 content: '테스트일정 내용',
                 class: 'common',
@@ -68,7 +238,19 @@ const scheduler = {
                 draggable: true,
                 allDay : true,
                 isgantt : false,
-                isShow : true,
+              },
+              {
+                id : '8',
+                start: '2021-12-16 11:15',
+                end: '2021-12-16 15:15',
+                title: '테스트일정 제목',
+                content: '테스트일정 내용',
+                class: 'Emergency',
+                deletable: true,
+                resizable: true,
+                draggable: true,
+                allDay : false,
+                isgantt : false,
               },
             ],
             copiedData : [{}],
@@ -88,9 +270,9 @@ const scheduler = {
       console.log(state.addEventData)
     },
 
-    sendselectDate(state, event){
+    setSelectDate(state, event){
+      console.log(event)
       state.selectedDate = event
-      return state.selectedDate;
     },
 
     setModal(state){
@@ -123,8 +305,17 @@ const scheduler = {
       state.flagStartDate = e
     },
     setflagEndDate(state,  e){
-      // console.log(e)
       state.flagEndDate = e
+      console.log(state.flagEndDate)
+    },
+    setFilterValue(state, e){
+      this.commit('scheduler/copyDataFunction')
+      state.filterValue = e
+      const copy = [...state.data]
+      if(state.filterValue !== 'all'){
+        let filtered = copy.filter( (v)=>(v.class === state.filterValue) )
+        state.data = filtered
+      }
     },
     getStartDate(state, e){
       state.flagStartDate = !state.flagStartDate
