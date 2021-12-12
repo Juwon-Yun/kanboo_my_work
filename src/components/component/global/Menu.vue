@@ -88,7 +88,7 @@ export default {
 
 <style scoped>
 .nav-container {
-  height: 100%;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;

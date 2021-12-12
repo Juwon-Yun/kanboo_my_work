@@ -22,7 +22,7 @@ import { ref } from 'vue';
 import Tree from 'vue3-tree'
 import "vue3-tree/dist/style.css";
 
-const key = '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';
+const key = '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';
 
 export default {
     components : {
@@ -130,7 +130,24 @@ export default {
 
 </script>
  
-<style scope>
+<style scoped>
+/* 
+.tree-row-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0px 10px
+}
+    margin-top: 4px;
+    height: 15px;
+
+    vue3-tree/dist/style.css 로 가서 변경해줘야 함
+
+
+*/
+.Repo > h1:nth-child(1){
+    margin-bottom: 3px;
+}
 .nodeTree{
     height: 20vh;
     background-color: #2C2F3B;

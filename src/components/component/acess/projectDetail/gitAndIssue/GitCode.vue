@@ -64,7 +64,9 @@ export default {
 .gitCode {
     height: 100%;
 }
-
+.gitCode > div > h1{
+    margin-bottom: 3px;
+}
 .fileContent{
     height: 100%;
     background-color: #2C2F3B;
@@ -80,6 +82,8 @@ export default {
     font-size: 17px;
     line-height: 1.5;
     padding: 5px;
+    height: 100vh;
+    overflow: scroll;
 }
 
 .prism-editor__textarea:focus {

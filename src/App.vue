@@ -29,6 +29,8 @@ export default {
   display: flex;
   flex-direction: column;
   background: #16161A;
+  overflow: hidden;
+
 }
 
 nav {
