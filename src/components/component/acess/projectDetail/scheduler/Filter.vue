@@ -54,6 +54,7 @@ export default {
               chkBox[i].checked = false
             }
             this.filterFlag = !this.filterFlag
+            //this.filterFlag => true -> unchecked
           }else if(this.filterFlag){
             if(chkBox[i].id === 'all'){
               chkBox[i].checked = true

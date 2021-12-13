@@ -30,7 +30,6 @@ export default {
   flex-direction: column;
   background: #16161A;
   overflow: hidden;
-
 }
 
 nav {

@@ -37,7 +37,7 @@ export default {
 }
 </script>
 
-<style scope>
+<style scoped>
 .addIssue{
     height: 7vh;
     background-color: #2C2F3B;
@@ -71,7 +71,7 @@ export default {
     overflow: scroll;
 }
 .Issues::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera*/
+    display: none; 
 }
 .getIssue{
     background-color: #2C2F3B;
