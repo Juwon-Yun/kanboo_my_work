@@ -24,7 +24,7 @@ export default {
 }
 </script>
 
-<style scope>
+<style scoped>
 .gitContainer{
     padding: 10px 40px;
     display: flex;

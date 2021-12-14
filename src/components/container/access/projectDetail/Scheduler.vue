@@ -230,7 +230,7 @@ export default {
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 70px);
     z-index: 4;
     display: flex;
     justify-content: center;

@@ -32,6 +32,7 @@
 <script scoped>
 import { mapMutations } from 'vuex'
 import VueCal from 'vue-cal'
+// import { ref } from '@vue/reactivity'
 
 export default {
     components:{
@@ -45,6 +46,15 @@ export default {
             changeLang : false,
         }
     },
+    // setup(){
+    //     const person1 = ref({name : 'yjw', age : 29})
+
+    //     const handleClick = () => {
+    //         person1.value.age++
+    //     };
+
+    //     return {person1, handleClick}
+    // },
     mounted() {
     },
     methods: {
